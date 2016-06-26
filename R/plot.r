@@ -110,6 +110,12 @@ ggplot.data.frame <- function(data, mapping = aes(), ...,
   p
 }
 
+#' @export
+#' @rdname ggplot
+#' @usage NULL
+ggplot.ts = function(data = NULL, mapping = aes(), ..., environment = parent.frame())
+  ggplot(data.frame(time = unclass(time(data)), value = unclass(data)))
+
 plot_clone <- function(plot) {
   p <- plot
   p$scales <- plot$scales$clone()
